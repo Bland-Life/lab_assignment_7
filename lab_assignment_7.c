@@ -90,10 +90,15 @@ int selection_sort(int arr[], int size) {
 
         // If there was an update to our index, swap the minimum value to the starting value of this iteration
         if (index > i) {
-            arr[index] = arr[i];
             value_swap_count[index] += 1;
-            arr[i] = min;
             value_swap_count[i] += 1;
+            int temp = value_swap_count[index];
+
+            arr[index] = arr[i];
+            value_swap_count[index] = value_swap_count[i];
+            value_swap_count[i] = temp;
+            arr[i] = min;
+            
             total_swaps++;
         }
     }
