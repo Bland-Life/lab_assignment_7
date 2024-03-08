@@ -46,9 +46,14 @@ int bubble_sort(int arr[], int size) {
             if (j + 1 < size && arr[j] > arr[j+1]) {
                 int temp = arr[j];
                 value_swap_count[j] += 1;
-                arr[j] = arr[j + 1];
                 value_swap_count[j + 1] += 1;
+                int temp_count = value_swap_count[j];
+                
+                arr[j] = arr[j + 1];
+                value_swap_count[j] = value_swap_count[j + 1];
+
                 arr[j + 1] = temp;
+                value_swap_count[j + 1] = temp_count;
                 total_swaps++;
             }
         }
